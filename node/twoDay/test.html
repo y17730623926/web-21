@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            color: deeppink;
+        }
+
+        #warp {
+            width: 1400px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>模特展示</h1>
+    <script>
+        $.ajax({
+            url: "http://localhost:3000",
+            type: "get",
+            data: {},
+            success: (data) => {
+                data = JSON.parse(data);
+                var arr = data.showapi_res_body["pagebean"].contentlist;
+                arr.forEach(item => {
+                    $("body").append(`<h2>城市:${item.city},风格:${item.type},模特:${item.realName}</h2>`)
+                    item.imgList.forEach(img => {
+                        $("body").append(`
+                    <div id="warp">
+                        <img src="${img}"></img>
+                    </div>
+                    `)
+                    })
+                });
+            }
+        })    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            padding-left: 50px;
+        }
+        input {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <span>用户名</span><input type="text" id="username">
+        <span>密码</span><input type="text" id="password">
+        <span>手机号</span><input type="text" id="phone">
+        <span>邮箱</span><input type="text" id="email">
+        <span>昵称</span><input type="text" id="nick">
+        <!-- <input type="submit" value="注册"> -->
+    </form>
+    <button>注册</button>
+    <script>
+        $("button").click((e)=>{
+            let username = $("#username").val();
+            let password = $("#password").val();
+            let phone = $("#phone").val();
+            let email = $("#email").val();
+            let nick = $("#nick").val();
+            $.ajax({
+                url:"http://localhost:3000",
+                type:'get',
+                data:{
+                    username,
+                    password,
+                    phone,
+                    email,
+                    nick
+                },
+                success:(data)=>{
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

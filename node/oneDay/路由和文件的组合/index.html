@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $.ajax({
+            url:"http://localhost:3000/aa",
+            type:"get",
+            success:(data)=>{
+                console.log(data);
+                // console.log(JSON.parse(data));
+            }
+        })
+        $.ajax({
+            url:"http://localhost:3000/bb",
+            type:"get",
+            success:(data)=>{
+                console.log(data);
+                $("head").after(`<style>${data}</style>`)
+                // console.log(JSON.parse(data));
+            }
+        })
+        $.ajax({
+            url:"http://localhost:3000/cc",
+            type:"get",
+            success:(data)=>{
+                console.log(data);
+                // console.log(JSON.parse(data));
+            }
+        })
+    </script>
+</body>
+</html>
