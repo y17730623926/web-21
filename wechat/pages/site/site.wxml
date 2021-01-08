@@ -1,0 +1,12 @@
+<!--pages/site/site.wxml-->
+<view class="box">
+  <view class="warp">
+    <view>头像:
+      <image src="{{userinfo.avatarUrl}}"></image>
+    </view>
+    <view class="user_name">用户名:{{userinfo.nickName}}</view>
+    <view class="user_name">国家:{{userinfo.country}}</view>
+    <view class="user_name">性别:{{userinfo.gender === 1 ? "男" : "女"}}</view>
+  </view>
+
+</view>

@@ -1,0 +1,90 @@
+<!--pages/find/find.wxml-->
+<!-- 响应式多种样式 -->
+<match-media min-width="300" max-width="600">
+  <view>当页面宽度在 300 ~ 500 px 之间时展示这里</view>
+</match-media>
+<match-media min-height="400" orientation="landscape">
+  <view>当页面高度不小于 400 px 且屏幕方向为纵向时展示这里</view>
+</match-media>
+<!-- 多种精灵图 -->
+<icon class="icon-box-img" type="success" size="30"></icon>
+<icon class="icon-box-img" type="info" size="30"></icon>
+<icon class="icon-box-img" type="warn" size="30"></icon>
+<icon class="icon-box-img" type="waiting" size="30"></icon>
+<icon class="icon-box-img" type="success_no_circle" size="30"></icon>
+<icon class="icon-box-img" type="circle" size="30"></icon>
+<icon class="icon-box-img" type="download" size="30"></icon>
+<icon class="icon-box-img" type="info_circle" size="30"></icon>
+<icon class="icon-box-img" type="cancel" size="30"></icon>
+<icon class="icon-box-img" type="search" size="30"></icon>
+<icon class="icon-box-img" type="clear" size="30"></icon>
+<!-- 可拖动的框 -->
+<movable-area class="move_warp">
+  <movable-view x="{{x}}" y="{{y}}" direction="all" class="move_item">text</movable-view>
+</movable-area>
+<!-- bindtap和catchtap的区别   bindtap会产生冒泡，catchtap不会 -->
+<button bindtap="btn">移动</button>
+<!-- 进度条  -->
+<view class="progress-box">
+  <progress percent="20" show-info stroke-width="3" border-radius="10" stroke-width="10" font-size="12"
+    activeColor="red" backgroundColor="pink" active="true" duration="100" />
+</view>
+<!-- 富文本 -->
+<rich-text nodes="{{htmlSnip}}"></rich-text>
+<!-- 表单 -->
+<form action="">
+  <!-- 多选框 -->
+  <checkbox-group>
+    <checkbox value="cb" checked="true" color="red" />选中
+    <checkbox value="cb" />未选中
+    <checkbox value="cb" />未选中
+  </checkbox-group>
+  <!-- 富文本输入框 -->
+  <editor style="height:50rpx;min-height:50rpx;background-color:red"></editor>
+  <input type="text" placeholder="这是一个文字输入框" style="border:1px solid #000;" />
+  <input type="password" placeholder="这是一个密码输入框" style="border:1px solid #000;" />
+  <input type="number" placeholder="这是一个数字输入框" style="border:1px solid #000;" />
+  <input type="idcard" placeholder="这是一个身份证输入框" style="border:1px solid #000;" />
+  <input type="digit" placeholder="这是一个带小数点的数字输入框" style="border:1px solid #000;" />
+  <!-- confirm-type 的合法值   值	        说明	
+                              send	    右下角按钮为“发送”	
+                              search	  右下角按钮为“搜索”	
+                              next    	右下角按钮为“下一个”	
+                              go	      右下角按钮为“前往”	
+                              done    	右下角按钮为“完成” -->
+  <!-- label绑定点在旁边的事件 for="label2" for用来指定触发对应的控件，内部有多个控件的时候默认触发第一个控件。 
+  目前可以绑定的控件有：button, checkbox, radio, switch。-->
+  <label>
+    <checkbox></checkbox>
+    <text class="label-1-text">label1</text>
+    <checkbox id="label2"></checkbox>
+    <text class="label-1-text">label2</text>
+  </label>
+  <!-- 多行文本框 -->
+  <textarea placeholder="form 中的 textarea" name="textarea" style="height:100rpx" />
+  </form>
+<!-- 滚动选择器 -->
+<picker-view indicator-style="height: 50px;" style="width: 100%; height: 200rpx;" value="{{value}}"
+  bindchange="bindChange">
+  <picker-view-column>
+    <view wx:for="{{years}}"  style="line-height: 50px; text-align: center;">{{item}}年</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{months}}" style="line-height: 50px; text-align: center;">{{item}}月</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{days}}"  style="line-height: 50px; text-align: center;">{{item}}日</view>
+  </picker-view-column>
+</picker-view>
+<!-- 单选 -->
+<radio-group>
+  <radio>单选1</radio>
+  <radio>单选2</radio>
+  <radio>单选3</radio>
+</radio-group>
+<!-- 滑动选择器 -->
+<slider bindchange="slider1change" left-icon="cancel" right-icon="success_no_circle" block-size="15" block-color="pink" show-value="true" activeColor="#f0f" backgroundColor="#ff0"/>
+<!-- 开关选择器 -->
+<switch checked="true"/>
+<input type="text" placeholder="失去焦点跳转到首页" placeholder-style="color:pink;" bindblur="jump_index1"/>
+<input type="text" placeholder="获取焦点跳转到index页面" placeholder-style="color:pink;" bindfocus="jump_index"/>

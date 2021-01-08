@@ -1,0 +1,2 @@
+<!--pages/search_find/search_find.wxml-->
+<tuijian tuijian="{{tuijian}}" img="img" desc="desc" price="price" text="{{text}}" _id="id"></tuijian>

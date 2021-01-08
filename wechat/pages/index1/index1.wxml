@@ -1,0 +1,53 @@
+<!--pages/index1/index1.wxml-->
+<view class="box">
+  <!-- 轮播图 -->
+  <view class="banner_box">
+    <!-- <swiper indicator-dots="true" autoplay="autoplay" interval="5000" duration="500">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item">
+            <image src="{{item.img}}"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper> -->
+    <!-- 轮播图组件 -->
+    <banner bannerHeight="300rpx" url="img" imgList="{{background}}"></banner>
+  </view>
+  <!-- 商品分类 -->
+  <view class="sort_warp">
+    <scroll-view scroll-x="true" style="height: 300rpx;" wx:key="sort">
+      <view class="scroll-view-item demo-text-1">
+        <view wx:for="{{sort1}}" class="sort1" wx:key="sort_item1" bindtap="jump_sort" data-name="{{item.name}}">
+          <image src="{{item.img}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 新品推荐 -->
+  <view class="conent_warp">
+    <!-- <view class="conent_item">
+      <view class="conent_head">潮流推荐</view>
+      <view class="conent_box">
+        <view class="conent_item_for" wx:for="{{tuijian}}">
+          <image src="{{item.img}}" alt=""/>
+          <text>{{item.desc}}</text>
+          <text class="on">￥{{item.price}}</text>
+        </view>
+      </view>
+    </view> -->
+    <tuijian tuijian="{{tuijian}}" img="img" desc="desc" price="price" text="潮流推荐" _id="id"></tuijian>
+    <!-- <view class="conent_item">
+      <view class="conent_head">网红带货</view>
+      <view class="conent_box">
+        <view class="conent_item_for" wx:for="{{wanghong}}">
+          <image src="{{item.img}}" alt=""/>
+          <text>{{item.desc}}</text>
+          <text class="on">￥{{item.price}}</text>
+        </view>
+      </view>
+    </view> -->
+    <tuijian tuijian="{{wanghong}}" img="img" desc="desc" price="price" text="网红带货" _id="id"></tuijian>
+  </view>
+</view>

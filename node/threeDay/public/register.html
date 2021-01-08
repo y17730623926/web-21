@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>注册</title>
     <style>
         * {
@@ -31,7 +29,7 @@
             border-radius: 10px;
             text-align: center;
         }
-        button {
+        button, .btn{
             display: block;
             width: 100px;
             text-align: center;
@@ -42,6 +40,7 @@
             background-color: rgb(65, 139, 19);
             border: none;
             border-radius: 3px;
+            text-indent: 0;
         }
         span {
             font-weight: bold;
@@ -49,40 +48,14 @@
         }
     </style>
 </head>
-
 <body>
-    <form>
-        <span>用户名</span><input type="text" id="username">
-        <span>密码</span><input type="text" id="password">
-        <span>手机号</span><input type="text" id="phone">
-        <span>邮箱</span><input type="text" id="email">
-        <span>昵称</span><input type="text" id="nick">
-        <!-- <input type="submit" value="注册"> -->
+    <form action="/register" method="POST">
+        <span>用户名</span><input type="text" id="username" name="username">
+        <span>密码</span><input type="text" id="password" name="password">
+        <span>手机号</span><input type="text" id="phone" name="phone">
+        <span>邮箱</span><input type="text" id="email" name="email">
+        <span>昵称</span><input type="text" id="nick" name="nick">
+        <input type="submit" value="注册" class="btn">
     </form>
-    <button>注册</button>
-    <script>
-        $("button").click((e)=>{
-            let username = $("#username").val();
-            let password = $("#password").val();
-            let phone = $("#phone").val();
-            let email = $("#email").val();
-            let nick = $("#nick").val();
-            $.ajax({
-                url:"http://localhost:3000",
-                type:'get',
-                data:{
-                    username,
-                    password,
-                    phone,
-                    email,
-                    nick
-                },
-                success:(data)=>{
-                    console.log(data);
-                }
-            })
-        })
-    </script>
 </body>
-
 </html>

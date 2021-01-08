@@ -1,0 +1,14 @@
+/* pages/find/find.wxss */
+.move_warp {
+  background-color: pink;
+  width: 600rpx;
+  height: 400rpx;
+}
+.move_item {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: forestgreen;
+  text-align: center;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+}

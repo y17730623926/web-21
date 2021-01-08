@@ -1,0 +1,52 @@
+<!--pages/list/list.wxml-->
+<view class="box">
+  <view class="banner">
+    <image src="{{list.img}}"></image>
+  </view>
+  <view class="shop">{{list.shop_name}}</view>
+  <view class="list">
+    <view class="list_one">
+      <text class="right">{{list.provcity}}</text>
+      <text class="on">￥{{list.price}}</text>
+      <text>{{list.desc}}</text>
+    </view>
+    <view class="list_two">
+      <view class="number_left">数量</view>
+      <view class="number_right">
+        <view class="z" bindtap="zeng">+</view>
+        <view class="num">{{list.num}}</view>
+        <view class="j" bindtap="jian">-</view>
+      </view>
+    </view>
+    <view class="appraise">
+      <view class="appraise_one">综合评价</view>
+      <view class="appraisse_two">
+        <view class="one">
+          <image src="../../image/banner/1.jpg"></image>
+          <text>杀人如麻奶茶妹</text>
+        </view>
+        <view class="two">实物的颜色有点暗淡，但是样子和做工还是很好看的，一半一半吧，可以购买</view>
+      </view>
+    </view>
+    <view class="imgs">
+      <image src="{{list.img}}"></image>
+    </view>
+  </view>
+  <view class="footer cf">
+    <view class="left footer_left">
+      <view class="left_one" bindtap="index_jump">
+        <image src="../../image/index.png"></image><text>首页</text>
+      </view>
+      <view class="left_two" bindtap="shopping_jump">
+        <image src="../../image/shop.png"></image><text>购物车</text>
+      </view>
+      <view class="left_there">
+        <image src="../../image/person-active.png"></image><text>客服</text>
+      </view>
+    </view>
+    <view class="right footer_right">
+      <view bindtap="shopping">加入购物车</view>
+      <view bindtap="buy">立即购买</view>
+    </view>
+  </view>
+</view>

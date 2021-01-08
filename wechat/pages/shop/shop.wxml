@@ -1,0 +1,29 @@
+<!--pages/shop/shop.wxml-->
+<view class="box">
+  <view class="shop_item" wx:for="{{search}}">
+    <icon class="icon-small" bindtap="icon_tap" type="{{item.status === 'false' ? 'circle' : 'success_no_circle'}}" size="23" data-index="{{index}}"></icon>
+    <image src="{{item.img}}"></image>
+    <view class="shop_conent">
+      <view class="name">{{item.desc}}</view>
+      <view class="price">￥{{item.price}}</view>
+      <view class="number">
+        <view bindtap="zeng" data-id="{{item.id}}">+</view>
+        <view>{{item.num}}</view>
+        <view bindtap="jian" data-id="{{item.id}}">-</view>
+      </view>
+    </view>
+    <view bindtap="delete" data-index="{{index}}">删除</view>
+  </view>
+  <view class="null" wx:if="{{length === 0}}">
+    购物车为空
+  </view>
+  <view class="shop_footer cf">
+    <view class="left">
+      <icon class="icon-small" bindtap="icons_tap" type="{{status ? 'success_no_circle' : 'circle'}}" size="23"></icon>全选
+    </view>
+    <view class="right">
+      <view>共计:{{_price}}元</view>
+      <button size="mini">结算</button>
+    </view>
+  </view>
+</view>

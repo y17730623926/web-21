@@ -1,0 +1,38 @@
+.conent_item {
+
+}
+.conent_head {
+  width: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 20rpx;
+}
+.conent_box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.conent_item_for {
+  width: 22%;
+  margin: 10rpx;
+}
+.conent_item_for image {
+  display: block;
+  width: 100%;
+  height: 200rpx;
+}
+.conent_item_for text {
+  display: block;
+  margin: auto;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.conent_item_for text.on {
+ color: red;
+}

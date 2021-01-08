@@ -1,0 +1,18 @@
+<!--pages/person/person.wxml-->
+<view class="box">
+  <view class="head_person">
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <view>{{userInfo.nickName}}</view>
+  </view>
+  <view class="nav_person">
+    <view>全部订单</view>
+    <view>待付款</view>
+    <view>待发货</view>
+    <view>待收货</view>
+    <view>待评价</view>
+  </view>
+  <view class="conent_person">
+    <view class="pim item" bindtap="pim_tap">个人信息</view>
+    <view class="site item" bindtap="site_tap">收货地址</view>
+  </view>
+</view>

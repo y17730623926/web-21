@@ -12,7 +12,7 @@ var server = http.createServer((req,res)=>{
 		res.end(JSON.stringify(datalist));
 	}
 })
-server.listen(3000);
+server.listen(3001);
 console.log("success~")
 data()  //别人发的请求之后的数据运行一下
 function data(){

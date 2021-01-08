@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "banner":"../../Component/banner/banner",
+    "tuijian":"../../Component/tuijian/tuijian"
+  },
+  "navigationBarTitleText": "首页"
+}

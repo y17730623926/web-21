@@ -1,0 +1,23 @@
+<!--logs.wxml-->
+<view class="box_top">
+  <input type="text" placeholder="请输入查询的商品" catchtap="focus_search" disabled="true" placeholder-style="color:black;"/>
+</view>
+<view class="box">
+  <!-- 分类左 -->
+  <view class="nav_sort" style="height:100%;width: 150rpx;">
+    <scroll-view scroll-y="true" style="height:100%;width: 150rpx;" class="sort">
+      <view class="scroll-view-item demo-text-1 {{name == item.name ? 'on' : ''}}" wx:for="{{sort}}" wx:key="left_sort">
+        <text catchtap="sort_btn" data-text="{{item.name}}">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 分类右 -->
+  <view class="conent">
+    <scroll-view scroll-y="true" class="conent_sort">
+      <view class="scroll-view-item demo-text-2" wx:for="{{sort1}}" wx:key="right_sort" bindtap="jump_list" data-id="{{item.id}}">
+        <image src="{{item.img}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

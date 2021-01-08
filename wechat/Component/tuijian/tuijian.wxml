@@ -1,0 +1,10 @@
+<view class="conent_item">
+  <view class="conent_head">{{text}}</view>
+  <view class="conent_box">
+    <view class="conent_item_for" wx:for="{{tuijian}}" bindtap="_jump_list" data-id="{{item[_id]}}">
+      <image src="{{item[img]}}"/>
+      <text>{{item[desc]}}</text>
+      <text class="on">￥{{item[price]}}</text>
+    </view>
+  </view>
+</view>

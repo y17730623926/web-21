@@ -1,0 +1,11 @@
+<!--pages/search/search.wxml-->
+<view class="search_warp">
+  <view>
+    <input type="text" placeholder="请输入您要搜索的内容" focus="true" placeholder-style="line-height:80rpx;" bindconfirm="search" confirm-type="搜索"/>
+  </view>
+  <icon size="25" type="search"></icon>
+</view>
+<view class="sort_warp">
+  <view>热门搜索</view>
+  <text wx:for="{{sort}}" data-name="{{item.title}}" bindtap="search">{{item.title}}</text>
+</view>

@@ -1,0 +1,58 @@
+{
+  "entryPagePath": "pages/index1/index1",
+  "pages":[
+    "pages/index/index",
+    "pages/index1/index1",
+    "pages/logs/logs",
+    "pages/find/find",
+    "pages/shop/shop",
+    "pages/person/person",
+    "pages/search/search",
+    "pages/search_find/search_find",
+    "pages/list/list",
+    "pages/site/site"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "英雄联盟周边商城",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#a79262",
+    "list": [
+      {
+        "pagePath": "pages/index1/index1",
+        "text": "首页",
+        "iconPath": "./image/index.png",
+        "selectedIconPath": "./image/index-active.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "商品分类",
+        "iconPath": "./image/sort.png",
+        "selectedIconPath": "./image/sort-active.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "购物车",
+        "iconPath": "./image/shop.png",
+        "selectedIconPath": "./image/shop-active.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "个人中心",
+        "iconPath": "./image/person.png",
+        "selectedIconPath": "./image/person-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
