@@ -7,16 +7,28 @@ Page({
    */
   data: {
     userInfo: {},
+    log:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  // 登录
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      log:true
+    })
+  },
+  // 信息
   pim_tap() {
     wx.navigateTo({
       url: '../site/site',
     })
   },
+  // 地址
   site_tap() {
     wx.chooseAddress({
       success(res) {
@@ -27,6 +39,7 @@ Page({
   onLoad: function () {
     this.setData({
       userInfo: app.globalData.userInfo,
+      log:app.globalData.userInfo === null ? false : true
     })
   },
   /**

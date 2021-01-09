@@ -8,9 +8,9 @@ Page({
   data: {
     search: [],
     _price: 0,
-    status: false,
+    status: "false",
     _state: true,
-    length:0
+    length: 0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -20,44 +20,30 @@ Page({
     const _index = e.currentTarget.dataset.index;
     let _search = this.data.search;
     _search[_index].status = _search[_index].status === 'false' ? 'true' : 'false';
-    let qx_stat = true;
+    let qx_stat = "true";
     _search.forEach(item => {
-      item.status === 'false' ? qx_stat = false : "";
+      item.status === 'false' ? qx_stat = "false" : "";
     })
-    if (qx_stat) {
-      this.setData({
-        status: true,
-        search: _search
-      })
-    } else {
-      this.setData({
-        status: false,
-        search: _search
-      })
-    }
+
+    this.setData({
+      status: qx_stat,
+      search: _search
+    })
+
     this.zongji();
   },
   //全选
   icons_tap(e) {
-    if (this.data.status) {
-      let _search = this.data.search;
-      _search.forEach(item => {
-        item.status = 'false'
-      })
-      this.setData({
-        search: _search,
-        status: false
-      })
-    } else {
-      let _search = this.data.search;
-      _search.forEach(item => {
-        item.status = 'true'
-      })
-      this.setData({
-        search: _search,
-        status: true
-      })
-    }
+    let state = this.data.status;
+    let _search = this.data.search;
+    state = state === 'false' ? 'true' : 'false';
+    _search.forEach(item => {
+      item.status = state
+    })
+    this.setData({
+      search: _search,
+      status: state
+    })
     this.zongji();
   },
   // 价格
@@ -70,14 +56,14 @@ Page({
       }
     })
     this.setData({
-      _price:zongjia
+      _price: zongjia
     })
   },
-  zeng(e){
+  zeng(e) {
     const _id = e.currentTarget.dataset.id;
     let _search = this.data.search;
-    _search.forEach(item=>{
-      if (item.id === _id){
+    _search.forEach(item => {
+      if (item.id === _id) {
         item.num++;
       }
       if (item.status === "true") {
@@ -85,35 +71,62 @@ Page({
       }
     })
     this.setData({
-      search:_search
+      search: _search
     })
   },
-  jian(e){
+  jian(e) {
     const _id = e.currentTarget.dataset.id;
     let _search = this.data.search;
-    _search.forEach(item=>{
-      if (item.id === _id){
-        item.num = item.num <= 1 ? 1 : item.num-1;
+    _search.forEach(item => {
+      if (item.id === _id) {
+        item.num = item.num <= 1 ? 1 : item.num - 1;
       }
       if (item.status === "true") {
         this.zongji()
       }
     })
     this.setData({
-      search:_search
+      search: _search
     })
   },
-  delete(e){
-    const _index = e.currentTarget.dataset.index;
-    let _search = this.data.search;
-    _search.splice(_index,1);
-    this.setData({
-      search:_search
+  delete(e) {
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除吗？',
+      success: res => {
+        if (res.confirm) {
+          // console.log('用户点击确定');
+          const _index = e.currentTarget.dataset.index;
+          wx.getStorage({
+            key: 'search',
+            success: res => {
+              let _search = res.data;
+              _search.splice(_index, 1);
+              this.setData({
+                search: _search
+              })
+              wx.setStorage({
+                data: _search,
+                key: 'search',
+              })
+              if (res.data.length === 0) {
+                wx.removeTabBarBadge({
+                  index: 2,
+                })
+              } else {
+                wx.setTabBarBadge({
+                  index: 2,
+                  text: `${res.data.length}`
+                })
+              }
+            }
+          })
+        } else if (res.cancel) {
+          // console.log('用户点击取消');
+        }
+      }
     })
-    wx.setStorage({
-      data: _search,
-      key: 'search',
-    })
+
   },
   onLoad: function (options) {
 
@@ -123,7 +136,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -135,19 +148,18 @@ Page({
       success: res => {
         this.setData({
           search: res.data,
-          length:this.data.search.length
+          length: this.data.search.length,
+          status: "false",
+          _price: 0
         })
       }
     })
-   
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载

@@ -1,5 +1,8 @@
 <!--pages/person/person.wxml-->
 <view class="box">
+  <view class="{{log ? 'hidden' :'show'}}">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+  </view>
   <view class="head_person">
     <image src="{{userInfo.avatarUrl}}"></image>
     <view>{{userInfo.nickName}}</view>

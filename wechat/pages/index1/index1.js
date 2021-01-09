@@ -9,15 +9,15 @@ Page({
   data: {
     background: [],
     sort1: [],
-    tuijian:[],
-    wanghong:[],
+    tuijian: [],
+    wanghong: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.username, "页面加载");
+    // console.log(app.globalData.username, "页面加载");
     // wx.request({
     //   url: 'http://localhost:3000/goods/bannerOne',
     //   method: "get",
@@ -49,14 +49,18 @@ Page({
       })
     })
     //推荐    网红
-    $.promiseGet("/goods/sousuo",{sousuo:"潮流"}).then(data=>{
+    $.promiseGet("/goods/sousuo", {
+      sousuo: "潮流"
+    }).then(data => {
       this.setData({
-        tuijian:data.data.data
+        tuijian: data.data.data
       })
     })
-    $.promiseGet("/goods/sousuo",{sousuo:"网红"}).then(data=>{
+    $.promiseGet("/goods/sousuo", {
+      sousuo: "网红"
+    }).then(data => {
       this.setData({
-        wanghong:data.data.data
+        wanghong: data.data.data
       })
     })
   },
@@ -74,7 +78,7 @@ Page({
     //   app.globalData传参
     // app.globalData.name = e.currentTarget.dataset.name;
   },
-  jump_list(e){
+  jump_list(e) {
     console.log(e);
     // wx.navigateTo({
     //   url: '../../pages/list/list?',
@@ -85,48 +89,59 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(app.globalData.username, "渲染完成");
+    // console.log(app.globalData.username, "渲染完成");
+    wx.getStorage({
+      key: "search",
+      success: res => {
+        if (res.data.length !== 0) {
+          wx.setTabBarBadge({
+            index: 2,
+            text: `${res.data.length}`
+          })
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData.username, "页面显示");
+    // console.log(app.globalData.username, "页面显示");
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log(app.globalData.username, "页面隐藏");
+    // console.log(app.globalData.username, "页面隐藏");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log(app.globalData.username, "页面卸载");
+    // console.log(app.globalData.username, "页面卸载");
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log(app.globalData.username, "下拉");
+    // console.log(app.globalData.username, "下拉");
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log(app.globalData.username, "触底");
+    // console.log(app.globalData.username, "触底");
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log(app.globalData.username, "分享");
+    // console.log(app.globalData.username, "分享");
   }
 })

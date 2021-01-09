@@ -40,7 +40,7 @@ Page({
   },
   onShow: function () {
     //右边
-    console.log("显示");
+    // console.log("显示");
     //  刷新分类，获取参数（Storage）
     wx.getStorage({
       key: 'data',
