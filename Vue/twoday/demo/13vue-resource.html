@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			img {
+				margin: auto;
+				display: block;
+				max-width: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in list" :key="index">
+					<h3><font color="red">{{item.city}}</font></h3>
+					<img :src="item.avatarUrl"/>
+					<ul>
+						<li v-for="(items,indexs) in item.imgList" :key="indexs">
+							<img :src="items"/>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					list:[]
+				},
+				mounted(){
+					this.getData();
+				},
+				methods:{
+					getData(){
+						this.$http.get("http://route.showapi.com/126-2",{
+							params:{
+								showapi_appid:'486513',
+								showapi_sign:'1e5a05c9ff0142f4998dd24e855bb09a',
+								page:"1"
+							}
+						}).then(res=>{
+							this.list = res.body.showapi_res_body.pagebean.contentlist;
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-for="(item,index) in news" :index="index" :id="item.id">{{item.name}}</div>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					news:[
+						{id:5,name:"于宽"},
+						{id:4,name:"周宇哲"},
+						{id:1,name:'李晓东'},
+						{id:2,name:'杨晓玲'},
+						{id:3,name:'樊芙'},
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

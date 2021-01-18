@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<img v-bind:src="tu"/>
+			<img :src="tu"/>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					tu:'../img/tiger.png',
+					status:10
+				}
+			})
+		</script>
+	</body>
+</html>

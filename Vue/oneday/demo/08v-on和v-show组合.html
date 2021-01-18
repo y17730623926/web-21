@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					num:1
+				},
+				methods:{
+					jia(){
+//						console.log(this);
+						this.num++;
+					},
+					jian(){
+						this.num--;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			#app {
+				width: 800px;
+				margin: 0px auto;
+			}
+			#app > img {
+				display: block;
+				margin: auto;
+				height: 100px;
+			}
+			#app > input {
+				width: 100%;
+				height: 50px;
+				background-color: #FFFFFF;
+				border: 3px solid #eee;
+				border-radius: 10px;
+				outline: none;
+				line-height: 50px;
+				font-size: 20px;
+				text-indent: 1em;
+			}
+			#app > input.on {
+				border: 3px solid #007AFF;
+				border-bottom: 1px solid #EEEEEE;
+				border-bottom-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+			}
+			ul {
+				width: 100%;
+				list-style: none;
+				border: 3px solid #007AFF;
+				margin-top: -3px;
+				border-bottom-right-radius: 10px;
+				border-bottom-left-radius: 10px;
+				padding-bottom: 20px;
+			}
+			ul li {
+				font-size: 20px;
+				color: pink;
+				text-indent: 1em;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"/>
+			<input type="text" v-model="inputval" @keyup="getData()"/>
+			<ul v-if="state">
+				<li v-for="(item,index) in list" :key="index">
+					{{item}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					list:[],
+					inputval:"",
+					state:false
+				},
+				watch:{
+					list(val){
+						if (val.length > 0) {
+							this.state = true;
+//							console.log(document);
+							document.getElementsByTagName("input")[0].setAttribute("class","on");
+						} else {
+							this.state = false;
+							document.getElementsByTagName("input")[0].setAttribute("class","");
+						}
+					}
+				},
+				methods:{
+					getData(){
+						if (this.inputval) {
+							this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+								params:{
+									wd:this.inputval
+								},
+								jsonp:'cb'
+							}).then(res=>{
+//								console.log(res);
+								if (res.body){
+									this.list = res.body.s;
+								}
+							})
+						} else {
+							this.list = [];
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="更新" onclick="change()"/>
+			<input type="button" value="销毁" onclick="destroy()"/>
+			{{name}}
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					name:"于宽"
+				},
+				methods:{
+					
+				},
+				//八个生命周期函数（生命周期钩子）
+				beforeCreate(){			//实例创建前的函数  ： new 前
+					alert("实例创建前~")
+				},
+				created(){				//实例创建完成的函数  ： new 后
+					alert("实例创建完成~")
+				},
+				beforeMount(){			//实例挂载前的函数  ： el 前
+					alert("实例挂载前~")
+				},
+				mounted(){				//实例挂载完成的函数  ： el 后     渲染数据可以得到data 的变量
+					alert("实力挂载完成~")
+				},
+				beforeUpdate(){			//实例修改前的函数   :  修改data变量前 
+					alert("实例修改前~")
+				},
+				updated(){				//实例修改完成的函数   :  修改data变量完成 
+					alert("实例修改完成~")
+					console.log(this);
+				},
+				beforeDestroy(){		//实例销毁前的函数   :  new的实例对象调用$destroy()方法，销毁前
+					alert("实例销毁前~")
+				},
+				destroyed(){			//实例销毁完成的函数   :  new的实例对象调用$destroy()方法，销毁完成
+					alert("实例销毁完成~")
+					console.log(this);
+				}
+			})
+			function change(){
+				vm.name = "🐟髋";
+			}
+			function destroy(){
+				vm.$destroy();
+			}
+		</script>
+	</body>
+</html>

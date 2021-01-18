@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{num | filter}}</h1>
+		</div>
+		<script type="text/javascript">
+			Vue.filter("filter",function(val){
+				return val > 10 ? val : "0" + val; 
+			})
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					num:8
+				}
+			})
+		</script>
+	</body>
+</html>

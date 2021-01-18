@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{msg}}</h1>
+			<box>
+				<h1 slot="slot1">我是组件的内容，我替换了slot的内容</h1>
+			</box>
+		</div>
+		<template id="box">
+			<div>
+				<h1>开始！！！！！</h1>
+				<slot name="slot1">我是slot的内容</slot>
+				<h2>结束！！！！！！！</h2>
+				
+			</div>
+		</template>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					msg:"我是挂载点"
+				},
+				components:{
+					"box":{
+						template:"#box"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

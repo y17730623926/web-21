@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<warp>
+				<h2 slot="one">我要替换slot第一个位置</h2>
+				<h3 slot="two">我要替换slot第二个位置</h3>
+				<h3 slot="three">我要替换slot第三个位置</h3>
+			</warp>
+		</div>
+		<template id="box">
+			<div>
+				<!--这里面的solt顺序决定了组件里面的顺序-->
+				<slot name="two">我是第二个位置</slot>
+				<slot name="one">我是第一个位置</slot>
+				<slot name="three">我是第三个位置</slot>
+			</div>
+		</template>
+		<script type="text/javascript">
+//			Vue.component("组件名",{template:"#模板id名"});
+			Vue.component("warp",{template:"#box"})
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

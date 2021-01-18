@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div  v-if="status > 10">大于十</div>
+			<div  v-else-if="status < 10">小于十</div>
+			<div  v-else="status === 10">等于十</div>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					news:`<h1>今天是一月一十一日</h1>`,
+					status:10
+				}
+			})
+		</script>
+	</body>
+</html>

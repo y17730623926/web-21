@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<hello-world name="于宽" :age="20" :six="asd" obj="{like:'动漫'}" obj-one="[1,2,3]"></hello-world>
+		</div>
+		<template id="box">
+			<div>
+				<h1>{{name}}</h1>
+				<h1>{{age}}</h1>
+				<h1>{{six}}</h1>
+				<h1>{{obj}}</h1>
+				<h1>{{objOne}}</h1>
+			</div>
+		</template>
+		<script type="text/javascript">
+			Vue.component("hello-world", {
+				template: "#box",
+				props: ["name", "age", "six", "obj", "objOne"]
+			})
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					asd:"男"
+				}
+			})
+		</script>
+	</body>
+
+</html>

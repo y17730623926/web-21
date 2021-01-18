@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.box {
+				width: 600px;
+				height: 600px;
+				background-color: #000000;
+				margin: auto;
+				position: relative;
+			}
+			.box > div {
+				width: 100px;
+				height: 100px;
+				background-color: deeppink;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="box">
+				<div v-tuo></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			Vue.directive("tuo",{
+				bind:function(el){
+					el.onmousedown = function () {
+						var father_l = el.offsetParent.offsetLeft;
+						var father_h = el.offsetParent.offsetTop;
+						document.onmousemove = function (event) {
+							var x = event.clientX - father_l - el.offsetWidth / 2;
+							var y = event.clientY - father_h - el.offsetHeight / 2;
+							x = x < 0 ? 0 : x;
+							x = x > (el.offsetParent.offsetWidth - el.offsetWidth) ? (el.offsetParent.offsetWidth - el.offsetWidth) : x;
+							y = y < 0 ? 0 : y;
+							y = y > (el.offsetParent.offsetHeight - el.offsetHeight) ? (el.offsetParent.offsetHeight - el.offsetHeight) : y;
+							el.style.left = x + "px";
+							el.style.top = y + "px";
+							
+						}
+					};
+					document.onmouseup = function () {
+						document.onmousemove = null;
+					}
+				}
+			})
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

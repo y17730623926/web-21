@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{str}}</h1>
+		</div>
+		<script type="text/javascript">
+			/* Vue 的核心库只关注视图层
+			vue 的核心vm: mvvm=module+view+viewModule */
+			// el=element
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					str:"今天是一月十一日"
+				}
+			})
+		</script>
+	</body>
+</html>

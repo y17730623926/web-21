@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<warp></wrap>
+		</div>
+		<div id="warp">
+			<warp></warp>
+		</div>
+		<script type="text/javascript">
+			Vue.component('warp',{
+				template:'<div> <h1>我是全局组件的模板</h1> </div> '
+			})
+			new Vue({
+				el:"#app",
+				data:{
+					
+				}
+			})
+			new Vue({
+				el:"#warp",
+				data:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

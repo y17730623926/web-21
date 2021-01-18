@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{news}}</h1>
+			<!--直接显示内容-->
+			<h1 v-pre>{{news}}</h1>	
+			<!--加载没完成之前不会显示 ，要配合：[v-cloak] { display: none } 使用-->
+			<h1 v-cloak>{{news}}</h1>
+			<!--只渲染元素和组件一次，之后修改变量，这里的值不会发生改变-->
+			<h1 v-once>{{news}}</h1>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					news:"我是一个小石头"	
+				}
+			})
+		</script>
+	</body>
+</html>

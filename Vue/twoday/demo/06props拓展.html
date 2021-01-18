@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<hello-world :num="num" str="yukuan" :obj="{name:'🐟髋'}" :obj-one="{name:'yukuan'}"></hello-world>
+		</div>
+		<template id="box">
+			<div>
+				<h1>{{num}}</h1>
+				<h1>{{str}}</h1>
+				<h1>{{obj}}</h1>
+				<h1>{{objOne}}</h1>
+				<h1>{{arr}}</h1>
+			</div>
+		</template>
+		<script type="text/javascript">
+			Vue.component("hello-world",{
+				template:"#box",
+				props:{
+					num:Number,
+					str:String,
+					obj:[Object],
+					objOne:{
+						type:Object,
+						required:true,
+//						default:{
+//							name:"于宽"
+//						}
+					},
+					arr:Array
+				}
+			})
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					num:150
+				}
+			})
+		</script>
+	</body>
+</html>

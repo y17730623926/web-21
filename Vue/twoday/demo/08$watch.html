@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{a}}</h1>
+			<h1>{{b}}</h1>
+			<h1>{{obj}}</h1>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					a:111,
+					b:222,
+					obj:{
+						name:"🐟"
+					}
+				}
+			})
+			vm.$watch("obj",function(){
+				alert("obj发生改变")
+			},{
+				deep:true
+			});
+			document.onmousedown = function () {
+				vm.a = 123;
+				vm.b = vm.a + 10; 
+				vm.obj.name = "于宽";
+			}
+		</script>
+	</body>
+</html>

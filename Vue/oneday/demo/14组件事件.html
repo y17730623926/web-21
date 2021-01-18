@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<warp></warp>
+		</div>
+		<template id="box">
+			<div>
+				<h1 @click="change">{{msg}}</h1>
+				<ul>
+					<li v-for="(item,index) in pome" :key="index">{{item.title}}</li>
+				</ul>
+			</div>
+		</template>
+		<script type="text/javascript">
+			Vue.component("warp",{
+				template:"#box",
+				data(){	//******	  这里的data是用方法写表示的是变量		******
+					return {
+						msg:'王维：鹿柴',
+						pome:[
+							{title:'空山不见人',id:1},
+							{title:'但闻人语响',id:2},
+							{title:'返景入深林',id:3},
+							{title:'复照青苔上',id:4}
+						]
+					}
+				},
+				methods:{
+					change(){
+						this.msg = "这是头部"
+					},
+				}
+			})
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					msg:""
+				}
+			})
+		</script>
+	</body>
+</html>

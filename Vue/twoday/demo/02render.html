@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					
+				},
+				render(createElement){	//添加标签
+					return createElement("ul",{
+						class:{		//起类名			03
+							on:true,
+							show:false
+						},
+						style:{		//渲染样式
+							listStyle:"none",
+							backgroundColor:"red",
+							color:"#fff",
+							fontSize:"30px"
+						},
+						attrs:{		//自定义属性		04
+							onclick:"change()",
+						}
+					},
+						[
+							createElement("li","你好"),
+							createElement("li","你好"),
+							createElement("li","你好"),
+							createElement("li","你好"),
+						]
+					)
+				}
+			})
+			function change(){
+				console.log(1);
+			}
+		</script>
+	</body>
+</html>
